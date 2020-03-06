@@ -18,33 +18,33 @@ public class Lab1 {
     @Before
     public void openGoogle()
     {
-          // Создать экземпляр WebDriver
+            //create WebDriver
             driver = new OperaDriver();
     }
 
     @Test
     public void testGoogle() {
-        // открыть google
+        // open google
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
-        // Ввод
+        // enter a request
         String expected="ghost - official";
         element.sendKeys(expected);
-        // Отправить форму
+        // send form
         element.submit();
 
-        // ожидание загрузки страницы, вызывает ExpectedCondition каждые 500 миллисекунд
-	    //до тех пор, пока условие не будет удовлетворено
+        // waiting for the page to load, calls ExpectedCondition every 500 ms
+	    //until the condition is fulfilled
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getTitle().toLowerCase().startsWith(expected);
             }
         });
 
-        // Название страницы
+        // page title
         System.out.println("Page title is: " + driver.getTitle());
 
-    	//Поиск элемента по тэгу (<h3 class="LC20lb DKV0Md">Ghost - Official</h3>)
+    	//search element by tag (<h3 class="LC20lb DKV0Md">Ghost - Official</h3>)
         element = driver.findElement(By.tagName("h3"));
 	
 	    //одинаков ли запрос и первый  результат поиска
@@ -54,7 +54,7 @@ public class Lab1 {
     @After
     public void closeGoogle()
     {
-        // Закрыть браузер
+        // close browser
         driver.quit();
     }
 }
