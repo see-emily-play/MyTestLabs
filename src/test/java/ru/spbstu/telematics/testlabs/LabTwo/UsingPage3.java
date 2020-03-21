@@ -22,6 +22,7 @@ public class UsingPage3 {
     @Before         //создать WebDriver, перейти на сайт Urban Threads и дождаться загрузки страницы
     public void openSite()
     {
+        System.setProperty("webdriver.opera.driver", "C:\\Program Files\\operadriver_win64\\operadriver.exe");
         driver = new OperaDriver();
         driver.get("https://urbanthreads.com/products.aspx?productid=UT21764");
         page= PageFactory.initElements(driver, Page3.class);

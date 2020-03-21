@@ -19,6 +19,7 @@ public class UsingHomePage {
     @Before    //создать WebDriver, перейти на сайт Urban Threads и дождаться загрузки страницы
     public void openSite()
     {
+        System.setProperty("webdriver.opera.driver", "C:\\Program Files\\operadriver_win64\\operadriver.exe");
         driver = new OperaDriver();
         driver.get("http://urbanthreads.com");
         page= PageFactory.initElements(driver, HomePage.class);

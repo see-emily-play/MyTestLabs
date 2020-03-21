@@ -21,6 +21,7 @@ public class UsingLoginPage {
     @Before         //создать WebDriver, перейти на сайт Urban Threads и дождаться загрузки страницы
     public void openSite()
     {
+        System.setProperty("webdriver.opera.driver", "C:\\Program Files\\operadriver_win64\\operadriver.exe");
         driver = new OperaDriver();
         driver.get("http://urbanthreads.com/User/login.aspx");
         page= PageFactory.initElements(driver, LoginPage.class);
@@ -55,7 +56,7 @@ public class UsingLoginPage {
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         System.out.println("Error: " + page.getEmailError());
 
-        Assert.assertTrue(page.getEmailError().contains("email address found"));
+        Assert.assertTrue(page.getEmailError().contains("email address"));
     }
 
     @After // закрыть браузер
