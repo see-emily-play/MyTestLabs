@@ -25,7 +25,6 @@ public class LoginPage {
     @FindBy(css="input#ctl00_MainContent_PasswordSender_UserNameContainerID_SubmitButton")
     WebElement submitButton;
 
-    //@FindBy(xpath="//*[@id=\"ctl00_MainContent_PasswordSender_UserNameContainerID_EmailPanel\"]/div/div[3]/text()")
     @FindBy(css="div.form-area.forgot_form")
     WebElement emailError;
 
