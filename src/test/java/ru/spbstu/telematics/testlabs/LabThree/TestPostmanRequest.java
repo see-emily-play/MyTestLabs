@@ -1,32 +1,31 @@
 package ru.spbstu.telematics.testlabs.LabThree;
 import org.junit.Test;
+
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.hasItem;
 
-//кодировка - windows-1251
-
 public class TestPostmanRequest {
 
-    @Test //запросить расширенную информацию о пользователе по id: имя, фамилия, скрыт ли профиль пользователя, пол,
-            //дата рождения, статус, количество подписчиков, сравнить status-code и содержимое ответа
-    public void testUsersGet() {
+    @Test //Р·Р°РїСЂРѕСЃРёС‚СЊ СЂР°СЃС€РёСЂРµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ РїРѕ id: РёРјСЏ, С„Р°РјРёР»РёСЏ, СЃРєСЂС‹С‚ Р»Рё РїСЂРѕС„РёР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РїРѕР»,
+    //РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ, СЃС‚Р°С‚СѓСЃ, РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРґРїРёСЃС‡РёРєРѕРІ, СЃСЂР°РІРЅРёС‚СЊ status-code Рё СЃРѕРґРµСЂР¶РёРјРѕРµ РѕС‚РІРµС‚Р°
+    public void testUsersGet(){
         when()
                 .get("https://api.vk.com/method/users.get?user_ids=559841696&fields=followers_count,bdate,status,sex&" +
                         "access_token=419f38af41ba75caa953e80e1b4cdfa8719c61fe437bbda7fee80e7e1ccaab1585ed373db6fe1399a84ba&v=5.103")
                 .then()
                 .statusCode(200)
                 .body("response.id", hasItem(559841696),
-                        "response.first_name", hasItem("Анастасия"),
-                        "response.last_name", hasItem("Ляхова"),
+                        "response.first_name", hasItem("РђРЅР°СЃС‚Р°СЃРёСЏ"),
+                        "response.last_name", hasItem("Р›СЏС…РѕРІР°"),
                         "response.is_closed", hasItem(false),
                         "response.sex", hasItem(1),
                         "response.bdate", hasItem("9.10.2005"),
-                        "response.status", hasItem("у меня лапки~"),
+                        "response.status", hasItem("Сѓ РјРµРЅСЏ Р»Р°РїРєРё~"),
                         "response.followers_count", hasItem(13));
     }
 
-    @Test //запросить информацию о заданном сообществе по короткому имени: название, id, является ли сообщество закрытым
-            //тип сообщества, открыта ли стена, статус, сравнить status-code и содержимое ответа
+    @Test //Р·Р°РїСЂРѕСЃРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ Р·Р°РґР°РЅРЅРѕРј СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕ РєРѕСЂРѕС‚РєРѕРјСѓ РёРјРµРЅРё: РЅР°Р·РІР°РЅРёРµ, id, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃРѕРѕР±С‰РµСЃС‚РІРѕ Р·Р°РєСЂС‹С‚С‹Рј
+    //С‚РёРї СЃРѕРѕР±С‰РµСЃС‚РІР°, РѕС‚РєСЂС‹С‚Р° Р»Рё СЃС‚РµРЅР°, СЃС‚Р°С‚СѓСЃ, СЃСЂР°РІРЅРёС‚СЊ status-code Рё СЃРѕРґРµСЂР¶РёРјРѕРµ РѕС‚РІРµС‚Р°
     public void testGroupGet() {
         when()
                 .get("https://api.vk.com/method/groups.getById?group_id=animalpic&fields=name,wall,status&" +
@@ -34,7 +33,7 @@ public class TestPostmanRequest {
                 .then()
                 .statusCode(200)
                 .body("response.id", hasItem(148523451),
-                        "response.name", hasItem("животные картинки"),
+                        "response.name", hasItem("Р¶РёРІРѕС‚РЅС‹Рµ РєР°СЂС‚РёРЅРєРё"),
                         "response.screen_name", hasItem("animalpic"),
                         "response.is_closed", hasItem( 0),
                         "response.type", hasItem("page"),
