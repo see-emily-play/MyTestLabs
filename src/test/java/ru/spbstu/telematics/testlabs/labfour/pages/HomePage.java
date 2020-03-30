@@ -61,7 +61,7 @@ public class HomePage {
 
     }
 
-    @Then("I click on recent releases$")
+    @When("I click on recent releases$")
     public void clickOnRecentReleases() {
         recentReleases.click();
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
